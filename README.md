@@ -1,3 +1,3 @@
 # MiniMessanger
 It is my first mini messanger. 
-Open index.html for read documentation.
+Open <a href=https://github.com/Trilonka/MiniMessanger/blob/master/Documentation/index.html>index.html<a/> for read documentation.
