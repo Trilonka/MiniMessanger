@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"MiniMessanger.src","l":"Client"},{"p":"MiniMessanger.src","l":"Connection"},{"p":"MiniMessanger.src","l":"ConnectionEvents"},{"p":"MiniMessanger.src","l":"Server"}]

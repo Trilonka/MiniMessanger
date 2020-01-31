@@ -1,14 +1,24 @@
+package MiniMessanger.src;
+
 import java.io.*;
 import java.net.Socket;
 
-class Connection {
-    private Socket socket;
-    private ConnectionEvents events;
-    private BufferedReader socketIn;
-    private BufferedWriter socketOut;
+/**
+ * This is the connection class that the client uses to communicate with the server
+ * Written 31.01.2020
+ * @author Trilonka
+ * @version 0.1.0
+ */
+public class Connection {
+
+    private final Socket socket;
+    private final ConnectionEvents events;
+    private final BufferedReader socketIn;
+    private final BufferedWriter socketOut;
     private Thread readerThread;
 
     /**
+     * initialization all params and start readerThread
      * @param socket
      * @param events
      * @throws IOException
@@ -33,6 +43,10 @@ class Connection {
         readerThread.start();
     }
 
+    /**
+     * Record messages in SocketBuffer
+     * @param message
+     */
     public synchronized void sendMessage(String message) {
         try {
             socketOut.write(message + "\n");
@@ -42,6 +56,9 @@ class Connection {
         }
     }
 
+    /**
+     * Disconnecting from the connection
+     */
     public synchronized void disconnect() {
         readerThread.interrupt();
         try {

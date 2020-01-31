@@ -1,12 +1,25 @@
+package MiniMessanger.src;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.Objects;
 
-class Server implements ConnectionEvents {
+/**
+ * This is server for connecting clients
+ * This class implements ConnectionEvents
+ * Written 31.01.2020
+ * @author Trilonka
+ * @version 0.1.0
+ */
+public class Server implements ConnectionEvents {
+
     private Connection serverConnection;
     private ArrayList<Connection> listOfConnections = new ArrayList<>();
 
+    /**
+     * Initialization Server and start socket-waiter
+     */
     private Server() {
         try(ServerSocket serverSocket = new ServerSocket(6565)) {
             while (true) {
@@ -17,10 +30,18 @@ class Server implements ConnectionEvents {
         }
     }
 
+    /**
+     * Start Server
+     * @param args
+     */
     public static void main(String[] args) {
         new Server();
     }
 
+    /**
+     * Send received message everyone client
+     * @param message
+     */
     private void sendEveryone(String message) {
         for (Connection c : listOfConnections) {
             c.sendMessage(message);

@@ -1,3 +1,5 @@
+package MiniMessanger.src;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,12 +7,23 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 
-class Client extends JFrame implements ConnectionEvents, ActionListener {
-    private Connection clientConnection;
-    private JTextArea area = new JTextArea();
-    private JTextField userNameInput = new JTextField("Sasha");
-    private JTextField userMessageInput = new JTextField();
+/**
+ * This is client's window for send message with textArea for show all messages,
+ * class is listener for input field and implement ConnectionEvents
+ * Written 31.01.2020
+ * @author Trilonka
+ * @version 0.1.0
+ */
+public class Client extends JFrame implements ConnectionEvents, ActionListener {
 
+    private Connection clientConnection;
+    private final JTextArea area = new JTextArea();
+    private final JTextField userNameInput = new JTextField("Sasha");
+    private final JTextField userMessageInput = new JTextField();
+
+    /**
+     * Create user window and start connection
+     */
     private Client() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(600,500);
@@ -34,10 +47,19 @@ class Client extends JFrame implements ConnectionEvents, ActionListener {
         }
     }
 
+    /**
+     * Start Client
+     * @param args
+     */
     public static void main(String[] args) {
         new Client();
     }
 
+    /**
+     * Print messages in window textArea
+     * return if message equals "null"
+     * @param message
+     */
     void printMessage(String message) {
         if (message.equals("null")) return;
         area.append(message + "\n");
@@ -65,6 +87,11 @@ class Client extends JFrame implements ConnectionEvents, ActionListener {
         connection.disconnect();
     }
 
+    /**
+     * Listener for userMessageInput
+     * return if void
+     * @param actionEvent
+     */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String message = userMessageInput.getText();
