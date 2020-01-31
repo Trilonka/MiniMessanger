@@ -1,2 +1,2 @@
-# beginnings
-It is my beginnings projects
+# MiniMessanger
+It is my first mini messanger. 
